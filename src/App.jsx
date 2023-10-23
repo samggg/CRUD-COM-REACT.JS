@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import 'semantic-ui-css/semantic.min.css';
 import { Modal, Button, Form } from 'semantic-ui-react';
-import './Rectangle.css';
+import './Forms.css';
 import Create from './Components/create';
 import { FaTrash, FaSearch, FaPencilAlt, FaPlus } from 'react-icons/fa';
 
@@ -65,7 +65,7 @@ function App() {
     { id: 3, name: 'Product 3', price: 5.99, description: 'Description of product 3' },
   ]);
 
-  const [showCreateForm, setShowCreateForm] = useState(false); // Estado para controlar a exibição do formulário de criação
+  const [showCreateForm, setShowCreateForm] = useState(false);
 
   const deleteProduct = (productId) => {
     const updatedProducts = products.filter((product) => product.id !== productId);
