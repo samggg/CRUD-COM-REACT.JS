@@ -4,8 +4,9 @@ import { Modal, Button, Form } from 'semantic-ui-react';
 import './Forms.css';
 import Create from './Components/create';
 import { FaTrash, FaSearch, FaPencilAlt, FaPlus } from 'react-icons/fa';
+import View from './Components/view';
 
-function ProductTable({ products, onAddItemClick, showCreateForm, setShowCreateForm }) {
+function ProductTable({ products, onAddItemClick, showCreateForm, setShowCreateForm, onViewItemClick }) {
   return (
     <div>
       <table>
@@ -26,7 +27,7 @@ function ProductTable({ products, onAddItemClick, showCreateForm, setShowCreateF
               <td>{product.price}</td>
               <td>{product.description}</td>
               <td>
-                <button className="button-view">
+                <button className="button-view" onClick={() => onViewItemClick(product)}>
                   <FaSearch /> View
                 </button>
                 <button className="button-add" onClick={() => onAddItemClick(product)}>
@@ -66,6 +67,7 @@ function App() {
   ]);
 
   const [showCreateForm, setShowCreateForm] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState(null);
 
   const deleteProduct = (productId) => {
     const updatedProducts = products.filter((product) => product.id !== productId);
@@ -74,6 +76,10 @@ function App() {
 
   const handleAddItemClick = (product) => {
     setShowCreateForm(true);
+  };
+
+  const handleViewItemClick = (product) => {
+    setSelectedProduct(product);
   };
 
   return (
@@ -86,7 +92,11 @@ function App() {
             onAddItemClick={handleAddItemClick}
             showCreateForm={showCreateForm}
             setShowCreateForm={setShowCreateForm}
+            onViewItemClick={handleViewItemClick}
           />
+          {selectedProduct && (
+            <View product={selectedProduct} onClose={() => setSelectedProduct(null)} />
+          )}
         </div>
       </div>
     </div>
