@@ -9,5 +9,5 @@ Este é um projeto simples de CRUD (Create, Read, Update, Delete) criado com Rea
 - Editar informações de itens existentes no banco de dados.
 - Excluir itens do banco de dados.
 
-OBS: Em breve, integração com Banco de Dados
+OBS: Em breve em funcionamento
 Link: https://samggg.github.io/CRUD-COM-REACT.JS/
